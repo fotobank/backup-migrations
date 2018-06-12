@@ -19,8 +19,8 @@
     }
   },
   "require": {
-    "illuminate/support": "~5.4",
-    "illuminate/database": "~5.4"
+    "laravel/framework": "~5.4",
+    "midnite81/laravel-base": "^2.3"
   },
   "require-dev": {
     "phpunit/phpunit": "^7.2"
