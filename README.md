@@ -28,7 +28,7 @@ To restore the most recent backup run
 
   ```php artisan migrate:restore```
   
-To specify a specific backup use the
+To specify a backup use the
 
 
   ```--file=```
