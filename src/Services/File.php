@@ -2,26 +2,53 @@
 
 namespace Pangolinkeys\BackupMigrations\Services;
 
-use Carbon\Carbon;
 use Illuminate\Support\Facades\Storage;
 
 class File
 {
-    public function getNextRotation($numberOfRotations = 5)
+    /**
+     * Tidy up the file structure before storing the backup.
+     * Allows you to limit the number of files that are
+     * stored at any given time. By default 5.
+     *
+     * @param int $numberOfRotations
+     * @return mixed
+     */
+    public static function tidy($numberOfRotations = 5)
     {
-        $disk = config('backup-migrations.folder');
-        $files = Storage::disk($disk)->allFiles();
+        $diskName = config('backup-migrations.disk');
 
-        dd($files[0]);
+        $files = Storage::disk($diskName)->allFiles();
 
-        if (count($files > $numberOfRotations)) {
+        if (count($files) >= $numberOfRotations) {
+            Storage::disk($diskName)->delete($files[0]);
+            self::tidy($numberOfRotations);
         }
 
-        return $this->generateFileName();
+        return Storage::disk($diskName)->getAdapter()->getPathPrefix();
     }
 
-    protected function generateFileName()
+    /**
+     * Get a file before executing the restore
+     * command. By default get the latest
+     * file in the directory.
+     *
+     * @param mixed $file
+     * @return mixed
+     * @throws \Illuminate\Contracts\Filesystem\FileNotFoundException
+     */
+    public static function getBackup($file = null)
     {
-        return Carbon::now()->timestamp() . '.sql';
+        $diskName = config('backup-migrations.disk');
+
+        if (is_null($file)) {
+            $files = Storage::disk($diskName)->allFiles();
+
+            $file = Storage::disk($diskName)->get(array_last($files));
+        } else {
+            $file = Storage::disk($diskName)->get($file);
+        }
+
+        return $file;
     }
 }
