@@ -45,6 +45,9 @@ class RestoreCommand extends Command
 
         if ($file) {
             DB::unprepared($file);
+            echo "Restore Completed Successfully\n";
+        } else {
+            echo "A backup file could not be found. Please run db:seed or migrate to generate a backup file.\n";
         }
     }
 

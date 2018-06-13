@@ -44,9 +44,17 @@ class File
         if (is_null($file)) {
             $files = Storage::disk($diskName)->allFiles();
 
-            $file = Storage::disk($diskName)->get(array_last($files));
+            if (count($files) > 0) {
+                $file = Storage::disk($diskName)->get(array_last($files));
+            } else {
+                return null;
+            }
         } else {
-            $file = Storage::disk($diskName)->get($file);
+            if (Storage::disk($diskName)->exists($file)) {
+                $file = Storage::disk($diskName)->get($file);
+            } else {
+                return null;
+            }
         }
 
         return $file;
