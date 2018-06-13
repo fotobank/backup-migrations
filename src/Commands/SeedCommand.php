@@ -2,34 +2,31 @@
 
 namespace Pangolinkeys\BackupMigrations\Commands;
 
-use Illuminate\Database\Console\Migrations\MigrateCommand as BaseMigrateCommand;
-use Illuminate\Support\Facades\Artisan;
+use Illuminate\Database\Console\Seeds\SeedCommand as BaseSeedCommand;
 use Pangolinkeys\BackupMigrations\Services\File;
 
-class MigrateCommand extends BaseMigrateCommand
+class SeedCommand extends BaseSeedCommand
 {
     /**
-     * @var BaseMigrateCommand
+     * @var BaseSeedCommand
      */
     protected $old;
 
     /**
-     * MigrateCommand constructor.
+     * SeedCommand constructor.
      *
-     * @param BaseMigrateCommand $old
+     * @param BaseSeedCommand $old
      */
-    public function __construct(BaseMigrateCommand $old)
+    public function __construct(BaseSeedCommand $old)
     {
-        parent::__construct($old->migrator);
+        parent::__construct($old->resolver);
         $this->old = $old;
     }
 
     /**
-     * For newer versions of Laravel.
-     *
-     * @return mixed
+     * For older versions of Laravel.
      */
-    public function handle()
+    public function fire()
     {
         $this->action();
 
@@ -37,7 +34,7 @@ class MigrateCommand extends BaseMigrateCommand
     }
 
     /**
-     * Command logic.
+     * Command Logic.
      */
     protected function action()
     {
@@ -59,13 +56,12 @@ class MigrateCommand extends BaseMigrateCommand
     }
 
     /**
-     * For older versions of Laravel.
+     * For newer versions of Laravel.
      */
-    public function fire()
+    public function handle()
     {
         $this->action();
 
-        return $this->old->fire();
+        return $this->old->handle();
     }
-
 }

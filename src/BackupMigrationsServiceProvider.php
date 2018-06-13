@@ -6,6 +6,7 @@ use Illuminate\Database\MigrationServiceProvider;
 use Midnite81\LaravelBase\BaseServiceProvider;
 use Pangolinkeys\BackupMigrations\Commands\MigrateCommand;
 use Pangolinkeys\BackupMigrations\Commands\RestoreCommand;
+use Pangolinkeys\BackupMigrations\Commands\SeedCommand;
 
 class BackupMigrationsServiceProvider extends MigrationServiceProvider
 {
@@ -15,6 +16,10 @@ class BackupMigrationsServiceProvider extends MigrationServiceProvider
 
         $this->app->extend('command.migrate', function ($old) {
             return new MigrateCommand($old);
+        });
+
+        $this->app->extend('command.seed', function ($old) {
+            return new SeedCommand($old);
         });
 
         $this->app->register(BaseServiceProvider::class);
