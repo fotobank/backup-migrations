@@ -3,6 +3,7 @@
 namespace Pangolinkeys\BackupMigrations\Commands;
 
 use Illuminate\Database\Console\Seeds\SeedCommand as BaseSeedCommand;
+use Illuminate\Support\Facades\Artisan;
 use Pangolinkeys\BackupMigrations\Services\File;
 
 class SeedCommand extends BaseSeedCommand
