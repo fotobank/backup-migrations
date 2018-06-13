@@ -33,7 +33,7 @@ class MigrateCommand extends BaseMigrateCommand
     {
         $this->action();
 
-        return $this->old->handle();
+        return parent::fire();
     }
 
     /**
@@ -65,7 +65,7 @@ class MigrateCommand extends BaseMigrateCommand
     {
         $this->action();
 
-        return $this->old->fire();
+        return parent::fire();
     }
 
 }

@@ -31,7 +31,7 @@ class SeedCommand extends BaseSeedCommand
     {
         $this->action();
 
-        return $this->old->handle();
+        return parent::fire();
     }
 
     /**
@@ -63,6 +63,6 @@ class SeedCommand extends BaseSeedCommand
     {
         $this->action();
 
-        return $this->old->handle();
+        return parent::fire();
     }
 }
