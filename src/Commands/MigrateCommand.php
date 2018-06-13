@@ -51,10 +51,9 @@ class MigrateCommand extends BaseMigrateCommand
         } else {
             File::tidy($backupCount);
         }
-        $disk = config('backup-migrations.disk');
         if (env('APP_ENV') === 'production') {
             Artisan::call('database:backup', [
-                'directory' => implode('/', array_slice(explode('/', config("filesystems.disks.$disk.root")), -3, 3)),
+                'directory' => config('backup-migrations.path'),
             ]);
             echo 'Backup Completed' . PHP_EOL;
         } else {
