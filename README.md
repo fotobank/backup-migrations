@@ -9,7 +9,7 @@ Register the
 service provider in the applications providers array.
 
 Run
-  ```php artisan vendor:publish --class=BackupMigrationsServiceProvider```
+  ```php artisan vendor:publish```
 to publish the config file.
 
 Run the commands
