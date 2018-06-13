@@ -25,13 +25,19 @@ class SeedCommand extends BaseSeedCommand
     }
 
     /**
-     * For older versions of Laravel.
+     * Handle the command execution.
+     *
+     * @return mixed
      */
-    public function fire()
+    public function handle()
     {
         $this->action();
 
-        return parent::fire();
+        if (method_exists($this, 'fire')) {
+            return parent::fire();
+        } else {
+            return parent::handle();
+        }
     }
 
     /**
@@ -54,15 +60,5 @@ class SeedCommand extends BaseSeedCommand
         } else {
             echo 'Application in development' . PHP_EOL;
         }
-    }
-
-    /**
-     * For newer versions of Laravel.
-     */
-    public function handle()
-    {
-        $this->action();
-
-        return parent::fire();
     }
 }

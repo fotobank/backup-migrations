@@ -25,7 +25,7 @@ class MigrateCommand extends BaseMigrateCommand
     }
 
     /**
-     * For newer versions of Laravel.
+     * Handle the command execution.
      *
      * @return mixed
      */
@@ -33,7 +33,11 @@ class MigrateCommand extends BaseMigrateCommand
     {
         $this->action();
 
-        return parent::fire();
+        if (method_exists($this, 'fire')) {
+            return parent::fire();
+        } else {
+            return parent::handle();
+        }
     }
 
     /**
@@ -56,16 +60,6 @@ class MigrateCommand extends BaseMigrateCommand
         } else {
             echo 'Application in development' . PHP_EOL;
         }
-    }
-
-    /**
-     * For older versions of Laravel.
-     */
-    public function fire()
-    {
-        $this->action();
-
-        return parent::fire();
     }
 
 }
