@@ -1,7 +1,7 @@
 <?php
 
 return [
-    'disk' => 'backups',
+    'disk' => 'backup-migrations',
     'backupCount' => 5,
-    'path' => 'pangolinkeys/backups',
+    'path' => 'mysql_dump/backup_migrations',
 ];
