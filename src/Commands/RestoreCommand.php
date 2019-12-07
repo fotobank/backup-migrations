@@ -1,10 +1,10 @@
 <?php
 
-namespace Pangolinkeys\BackupMigrations\Commands;
+namespace Fotobank\BackupMigrations\Commands;
 
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\DB;
-use Pangolinkeys\BackupMigrations\Services\File;
+use Fotobank\BackupMigrations\Services\File;
 
 class RestoreCommand extends Command
 {
