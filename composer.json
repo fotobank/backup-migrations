@@ -1,21 +1,21 @@
 {
-  "name": "pangolinkeys/backup-migrations",
-  "description": "A package that takes a backup of the database before running a migration",
+  "name": "fotobank/backup-migrations",
+  "description": "The package, which makes the database backup before performing the migration or seeder",
   "license": "MIT",
   "authors": [
     {
-      "name": "James Cook",
-      "email": "me@jamesaidancook.com"
+      "name": "Aleks Jurii",
+      "email": "aleksjurii@jmail.com"
     }
   ],
   "autoload": {
     "psr-4": {
-      "Pangolinkeys\\BackupMigrations\\": "src/"
+      "Fotobank\\BackupMigrations\\": "src/"
     }
   },
   "autoload-dev": {
     "psr-4": {
-      "Pangolinkeys\\BackupMigrations\\Tests\\": "tests/"
+      "Fotobank\\BackupMigrations\\Tests\\": "tests/"
     }
   },
   "require": {
