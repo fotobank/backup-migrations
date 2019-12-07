@@ -27,7 +27,7 @@ class BackupMigrationsServiceProvider extends MigrationServiceProvider
         $this->commands([
             RestoreCommand::class,
         ]);
-        $this->publishes([__DIR__ . '/../config/backup-migrations.php' => config_path('backup-migrations.php')]);
+        $this->publishes([__DIR__ . '/../config/backup-migrations.php' => config_path('backup-migrations.php')],'backup-migrations');
         $this->mergeConfigFrom(__DIR__ . '/../config/filesystem.php', 'filesystems');
     }
 }
