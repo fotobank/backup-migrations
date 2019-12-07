@@ -1,12 +1,12 @@
 <?php
 
-namespace Pangolinkeys\BackupMigrations;
+namespace Fotobank\BackupMigrations;
 
 use Illuminate\Database\MigrationServiceProvider;
 use Midnite81\LaravelBase\BaseServiceProvider;
-use Pangolinkeys\BackupMigrations\Commands\MigrateCommand;
-use Pangolinkeys\BackupMigrations\Commands\RestoreCommand;
-use Pangolinkeys\BackupMigrations\Commands\SeedCommand;
+use Fotobank\BackupMigrations\Commands\MigrateCommand;
+use Fotobank\BackupMigrations\Commands\RestoreCommand;
+use Fotobank\BackupMigrations\Commands\SeedCommand;
 
 class BackupMigrationsServiceProvider extends MigrationServiceProvider
 {
