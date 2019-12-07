@@ -5,6 +5,7 @@ namespace Fotobank\BackupMigrations\Commands;
 use Illuminate\Database\Console\Migrations\MigrateCommand as BaseMigrateCommand;
 use Illuminate\Support\Facades\Artisan;
 use Fotobank\BackupMigrations\Services\File;
+use Carbon\Carbon;
 
 class MigrateCommand extends BaseMigrateCommand
 {
@@ -45,20 +46,7 @@ class MigrateCommand extends BaseMigrateCommand
      */
     protected function action()
     {
-        $backupCount = config('backup-migrations.backupCount');
-        if (empty($backupCount)) {
-            File::tidy();
-        } else {
-            File::tidy($backupCount);
-        }
-        if (env('APP_ENV') === 'production') {
-            Artisan::call('database:backup', [
-                'directory' => config('backup-migrations.path'),
-            ]);
-            echo 'Backup Completed' . PHP_EOL;
-        } else {
-            echo 'Application in development' . PHP_EOL;
-        }
+	    File::backupSQL('migrations');
     }
 
 }
