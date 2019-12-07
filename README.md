@@ -9,23 +9,8 @@ Register the
 service provider in the applications providers array.
 
 Run
-  ```php artisan vendor:publish```
+  ```php artisan vendor:publish --provider="Fotobank\BackupMigrations\BackupMigrationsServiceProvider" --tag="backup-migrations"	```
 to publish the config file.
-
-Add a local drive 'backup-migrations' in config/filesystems.php
-```
-'disks' => [
-
-//
-
-'backup-migrations' => [
-	        'driver' => 'local',
-	        'root' => storage_path(config('backup-migrations.path')),
-        ],
-		
-//
-],
-```
 
 Run the commands
 
