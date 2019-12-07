@@ -20,7 +20,7 @@
   },
   "require": {
     "laravel/framework": "~5.4",
-    "paulvl/backup": "3.*",
+    "paulvl/backup": "3.*"
   },
   "require-dev": {
     "phpunit/phpunit": "^7.2"
