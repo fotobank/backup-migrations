@@ -19,19 +19,6 @@ Run publish command
   
 to publish the config file.
 
-Add to file config/filesystems.php disk 'backup'
-
-```
-\\
-'backup' => [
-	        'driver' => 'local',
-	        'root' => storage_path('mysql_dump'),
-	        'url' => env('APP_URL').'/storage',
-	        'visibility' => 'public',
-        ],
-\\        
-```
-
 Run the commands
 
 
