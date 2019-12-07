@@ -2,10 +2,10 @@
 Repository to perform a database backup before migrations and seeds are run.
 
 Require this package using
-  ```composer require pangolinkeys/backup-migrations```
+  ```composer require fotobank/backup-migrations```
 
 Register the 
-  ```BackupMigrationsServiceProvider:class```
+  ```Fotobank\BackupMigrations\BackupMigrationsServiceProvider::class,```
 service provider in the applications providers array.
 
 Run
