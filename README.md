@@ -5,17 +5,25 @@ Require this package using
 
   ```composer require fotobank/backup-migrations```
 
+
+
 Register the 
 
   ```Fotobank\BackupMigrations\BackupMigrationsServiceProvider::class,```
   
 service provider in the applications providers array.
 
+
+
+
 Run publish command
 
   ```php artisan vendor:publish --tag="backup-migrations"	```
   
 to publish the config file.
+
+
+
 
 Run the commands
 
@@ -28,10 +36,16 @@ Run the commands
  
 as usual. In the background a backup dump of the database will be taken.
 
+
+
+
 To restore the most recent backup run
 
 
   ```php artisan migrate:restore```
+  
+  
+  
   
 To specify file a backup use the
 
