@@ -2,14 +2,19 @@
 Repository to perform a database backup before migrations and seeds are run.
 
 Require this package using
+
   ```composer require fotobank/backup-migrations```
 
 Register the 
+
   ```Fotobank\BackupMigrations\BackupMigrationsServiceProvider::class,```
+  
 service provider in the applications providers array.
 
-Run
+Run publish command
+
   ```php artisan vendor:publish --tag="backup-migrations"	```
+  
 to publish the config file.
 
 Run the commands
