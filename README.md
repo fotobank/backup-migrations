@@ -9,7 +9,7 @@ Register the
 service provider in the applications providers array.
 
 Run
-  ```php artisan vendor:publish --provider="Fotobank\BackupMigrations\BackupMigrationsServiceProvider" --tag="backup-migrations"	```
+  ```php artisan vendor:publish --tag="backup-migrations"	```
 to publish the config file.
 
 Run the commands
