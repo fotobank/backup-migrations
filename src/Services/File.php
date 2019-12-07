@@ -1,6 +1,6 @@
 <?php
 
-namespace Pangolinkeys\BackupMigrations\Services;
+namespace Fotobank\BackupMigrations\Services;
 
 use Illuminate\Support\Facades\Storage;
 
