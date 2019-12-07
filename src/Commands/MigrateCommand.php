@@ -1,10 +1,10 @@
 <?php
 
-namespace Pangolinkeys\BackupMigrations\Commands;
+namespace Fotobank\BackupMigrations\Commands;
 
 use Illuminate\Database\Console\Migrations\MigrateCommand as BaseMigrateCommand;
 use Illuminate\Support\Facades\Artisan;
-use Pangolinkeys\BackupMigrations\Services\File;
+use Fotobank\BackupMigrations\Services\File;
 
 class MigrateCommand extends BaseMigrateCommand
 {
