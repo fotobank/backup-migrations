@@ -2,6 +2,8 @@
 
 namespace Fotobank\BackupMigrations\Services;
 
+use Carbon\Carbon;
+use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Storage;
 
 class File
@@ -14,12 +16,11 @@ class File
      * @param int $numberOfRotations
      * @return mixed
      */
-    public static function tidy($numberOfRotations = 5)
+    public static function tidy($numberOfRotations)
     {
         $diskName = config('backup-migrations.disk');
 
         $files = Storage::disk($diskName)->allFiles();
-
         if (count($files) >= $numberOfRotations) {
             Storage::disk($diskName)->delete($files[0]);
             self::tidy($numberOfRotations);
@@ -58,5 +59,19 @@ class File
         }
 
         return $file;
+    }
+    
+    public static function backupSQL($command){
+    	
+	    File::tidy(config('backup-migrations.backupCount') ?? 5 );
+
+	    $path = config('backup-migrations.path');
+	    $connectionName = config('database.default');
+	    $filename = str_slug($connectionName) . '-' . Carbon::now()->format('Y-m-d_H-i-s') . '.sql';
+
+	    Artisan::call('backup:mysql-dump', ['filename'=>$path . DIRECTORY_SEPARATOR . $filename]);
+
+	    echo 'application in ' . ((env('APP_ENV') === 'production') ? 'production' : 'development') . PHP_EOL;
+	    echo "pre-{$command} database backup to {$filename} completed" . PHP_EOL;
     }
 }
