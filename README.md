@@ -43,7 +43,7 @@ To restore the most recent backup run
 
   ```php artisan migrate:restore```
   
-To specify a backup use the
+To specify file a backup use the
 
 
   ```--file=```
