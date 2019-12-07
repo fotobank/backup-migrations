@@ -12,6 +12,21 @@ Run
   ```php artisan vendor:publish```
 to publish the config file.
 
+Add a local drive 'backup-migrations' in config/filesystems.php
+```
+'disks' => [
+
+//
+
+'backup-migrations' => [
+	        'driver' => 'local',
+	        'root' => storage_path(config('backup-migrations.path')),
+        ],
+		
+//
+],
+```
+
 Run the commands
 
 
